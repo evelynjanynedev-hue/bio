@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Evelyn · @evedev3</title>
+  <meta name="description" content="Construa seu negócio com direção, estrutura e execução. Tecnologia, IA, marketing e vendas aplicados na prática para transformar ideias em negócios.">
+  <meta name="theme-color" content="#F8F4F0">
+  <meta property="og:title" content="Evelyn · @evedev3">
+  <meta property="og:description" content="Direção, estrutura e execução. Tecnologia, IA, marketing e vendas na prática.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F0BE3C'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia' font-size='20' font-weight='700' fill='%231B1A17'%3EE%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F8F4F0;
+      --ink: #1B1A17;
+      --muted: #6F6A61;
+      --faint: #8A847A;
+      --line: #DED6CB;
+      --gold: #F0BE3C;
+      --gold-ink: #8A6413;
+      --blue: #326482;
+      --green: #467850;
+      --red: #B44628;
+      --dark: #161512;
+      --serif: Didot, "Bodoni Moda", "Hoefler Text", Georgia, serif;
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection { background: var(--gold); color: var(--ink); }
+
+    a, button { -webkit-tap-highlight-color: transparent; }
+
+    :focus { outline: none; }
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .pending-note {
+      display: none;
+      background: var(--dark);
+      color: #fff;
+      padding: 14px 22px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .pending-note strong {
+      display: block;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    body.needs-links .pending-note { display: block; }
+
+    main {
+      background-color: var(--cream);
+      background-image: radial-gradient(rgba(27, 26, 23, .035) 0.6px, transparent 0.6px);
+      background-size: 3px 3px;
+    }
+
+    .wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 32px 22px calc(36px + env(safe-area-inset-bottom));
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .who {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .handle {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .handle:hover { color: var(--ink); }
+
+    .mark {
+      display: block;
+      width: 42px;
+      height: 2px;
+      background: var(--gold);
+      margin: 20px 0 22px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(34px, 9vw, 48px);
+      line-height: 1.04;
+      letter-spacing: -.02em;
+      text-wrap: balance;
+    }
+
+    .deck {
+      margin-top: 16px;
+      font-size: 16.5px;
+      line-height: 1.45;
+      color: var(--ink);
+      max-width: 34em;
+      text-wrap: pretty;
+    }
+
+    .triad {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 18px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .triad span + span::before {
+      content: "·";
+      margin: 0 8px;
+      color: var(--gold-ink);
+      letter-spacing: 0;
+    }
+
+    .primary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 28px -22px 0;
+      padding: 24px 20px 24px 22px;
+      background: var(--gold);
+      color: var(--ink);
+      text-decoration: none;
+      transition: transform .16s ease;
+    }
+    .primary .kicker {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .primary .title {
+      display: block;
+      margin-top: 8px;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 1.02;
+      letter-spacing: -.015em;
+    }
+    .primary .sub {
+      display: block;
+      margin-top: 6px;
+      font-size: 15px;
+      line-height: 1.35;
+      color: rgba(27, 26, 23, .78);
+    }
+    .primary .arrow,
+    .go,
+    .cta .arrow {
+      flex: 0 0 auto;
+      font-size: 26px;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+    .primary .arrow { animation: hint 1.05s ease .7s 1 both; }
+
+    @keyframes hint {
+      0%, 100% { transform: none; }
+      45% { transform: translateX(6px); }
+    }
+
+    .primary:active { transform: scale(.985); }
+
+    nav[aria-label="Caminhos"] { margin-top: 10px; }
+
+    .row {
+      display: grid;
+      grid-template-columns: 3px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 16px 2px 16px 0;
+      border-bottom: 1px solid var(--line);
+      color: inherit;
+      text-decoration: none;
+    }
+    .row:first-child { border-top: 1px solid var(--line); }
+    .bar { align-self: stretch; min-height: 44px; }
+    .bar.blue { background: var(--blue); }
+    .bar.green { background: var(--green); }
+    .bar.red { background: var(--red); }
+    .bar.dark { background: var(--dark); }
+    .row .t,
+    .stage .t {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 23px;
+      line-height: 1.12;
+      letter-spacing: -.01em;
+    }
+    .row .s,
+    .stage .s {
+      display: block;
+      margin-top: 3px;
+      font-size: 14.5px;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+    .go { color: var(--ink); font-size: 20px; }
+
+    .start { margin-top: 46px; }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    h2 {
+      margin-top: 12px;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(30px, 8vw, 40px);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      text-wrap: balance;
+    }
+
+    .lead {
+      margin-top: 10px;
+      font-size: 16px;
+      color: var(--ink);
+    }
+
+    .pips {
+      display: flex;
+      gap: 6px;
+      margin: 22px 0 8px;
+    }
+    .pips i {
+      flex: 1;
+      height: 3px;
+      background: #C9C1B5;
+      display: block;
+    }
+    .pips i.on { background: var(--ink); }
+    .pips i.now { background: var(--pip, var(--ink)); }
+
+    .stages { margin-top: 8px; }
+
+    .stage {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      align-items: start;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      padding: 15px 8px 15px 10px;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      transition: background .18s ease;
+    }
+    .stage:first-child { border-top: 1px solid var(--line); }
+    .stage .n {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.25;
+      color: var(--faint);
+      padding-top: 2px;
+    }
+    .here {
+      display: none;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--c-ink);
+    }
+    .stage[aria-checked="true"] {
+      background: color-mix(in srgb, var(--c) 16%, var(--cream));
+      box-shadow: inset 3px 0 0 var(--c);
+    }
+    .stage[aria-checked="true"] .n,
+    .stage[aria-checked="true"] .here { color: var(--c-ink); }
+    .stage[aria-checked="true"] .here { display: inline-block; }
+    .stage[data-stage="ideia"] { --c: var(--gold); --c-ink: var(--gold-ink); }
+    .stage[data-stage="clientes"] { --c: var(--blue); --c-ink: var(--blue); }
+    .stage[data-stage="organizar"] { --c: var(--green); --c-ink: var(--green); }
+    .stage[data-stage="crescer"] { --c: var(--red); --c-ink: var(--red); }
+
+    .reflect {
+      margin-top: 18px;
+      padding: 2px 0 2px 14px;
+      border-left: 3px solid var(--blue);
+      color: var(--blue);
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 500;
+      min-height: 2.8em;
+    }
+    .reflect[data-tone="gold"] { border-color: var(--gold); color: var(--gold-ink); }
+    .reflect[data-tone="blue"] { border-color: var(--blue); color: var(--blue); }
+    .reflect[data-tone="green"] { border-color: var(--green); color: var(--green); }
+    .reflect[data-tone="red"] { border-color: var(--red); color: var(--red); }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 18px -22px 0;
+      padding: 22px 20px 22px 22px;
+      background: var(--dark);
+      color: #fff;
+      text-decoration: none;
+      transition: transform .16s ease;
+    }
+    .cta:active { transform: scale(.985); }
+    .cta .k {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .cta .big {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.05;
+      letter-spacing: -.015em;
+    }
+    .cta .arrow { color: var(--gold); }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-top: 34px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .statement {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    footer .handle {
+      font-size: 13px;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    @media (hover: hover) {
+      .primary:hover .arrow,
+      .cta:hover .arrow,
+      .row:hover .go { transform: translateX(5px); }
+      .row:hover { background: rgba(27, 26, 23, .03); }
+      .stage:hover { background: color-mix(in srgb, var(--c) 8%, transparent); }
+    }
+
+    @media (min-width: 760px) {
+      body {
+        background: var(--dark);
+        padding: 48px 16px 72px;
+      }
+      .pending-note { max-width: 480px; margin: 0 auto 0; }
+      main {
+        max-width: 480px;
+        margin: 0 auto;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, .35);
+      }
+      .wrap { padding: 40px 36px 44px; }
+      .primary, .cta {
+        margin-left: -36px;
+        margin-right: -36px;
+        padding-left: 36px;
+        padding-right: 32px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <p class="pending-note" id="links">
+    <strong>Antes de publicar</strong>
+    Troque cada COLE_AQUI pelo link real. Está no final deste arquivo, no bloco LINKS.
+  </p>
+
+  <main>
+    <div class="wrap">
+      <header>
+        <div class="topline">
+          <p class="who">Evelyn</p>
+          <a class="handle" href="https://instagram.com/evedev3">@evedev3</a>
+        </div>
+        <span class="mark" aria-hidden="true"></span>
+        <h1>Construa seu negócio com direção, estrutura e execução.</h1>
+        <p class="deck">Tecnologia, IA, marketing e vendas aplicados na prática para transformar ideias em negócios.</p>
+        <p class="triad">
+          <span>Direção</span>
+          <span>Estrutura</span>
+          <span>Execução</span>
+        </p>
+      </header>
+
+      <a class="primary" data-link="metodo" href="#links">
+        <span>
+          <span class="kicker">Comece pelo método</span>
+          <span class="title">Aula gratuita</span>
+          <span class="sub">Como criar sua empresa do zero</span>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+      <nav aria-label="Caminhos">
+        <a class="row" data-link="comunidade" href="#links">
+          <span class="bar blue" aria-hidden="true"></span>
+          <span>
+            <span class="t">Entre na comunidade</span>
+            <span class="s">Aulas, desafios, dúvidas e troca com outros empreendedores</span>
+          </span>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+        <a class="row" data-link="ferramentas" href="#links">
+          <span class="bar green" aria-hidden="true"></span>
+          <span>
+            <span class="t">Ferramentas &amp; IA</span>
+            <span class="s">Ferramentas que eu uso e recomendo para criar, vender e escalar</span>
+          </span>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+        <a class="row" data-link="youtube" href="https://www.youtube.com/@evedev3">
+          <span class="bar red" aria-hidden="true"></span>
+          <span>
+            <span class="t">YouTube</span>
+            <span class="s">Aulas completas sobre negócios, marketing, vendas, tecnologia e IA</span>
+          </span>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+        <a class="row" data-link="whatsapp" href="#links">
+          <span class="bar dark" aria-hidden="true"></span>
+          <span>
+            <span class="t">WhatsApp</span>
+            <span class="s">Entre na comunidade e acompanhe as próximas aulas</span>
+          </span>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
+      <section class="start" aria-labelledby="comece-title">
+        <p class="eyebrow">Comece aqui</p>
+        <h2 id="comece-title">Você não precisa ter tudo pronto.</h2>
+        <p class="lead">Comece pela etapa em que você está.</p>
+
+        <div class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+        <div class="stages" role="radiogroup" aria-label="Etapa do seu negócio">
+          <button type="button" class="stage" role="radio" aria-checked="false" data-stage="ideia" tabindex="0">
+            <span class="n">01</span>
+            <span>
+              <span class="t">Tenho uma ideia</span>
+              <span class="s">Aprenda a transformar uma ideia em uma oferta.</span>
+              <span class="here">Você está aqui</span>
+            </span>
+          </button>
+          <button type="button" class="stage" role="radio" aria-checked="false" data-stage="clientes" tabindex="-1">
+            <span class="n">02</span>
+            <span>
+              <span class="t">Preciso de clientes</span>
+              <span class="s">Aprenda posicionamento, prospecção, marketing e vendas.</span>
+              <span class="here">Você está aqui</span>
+            </span>
+          </button>
+          <button type="button" class="stage" role="radio" aria-checked="false" data-stage="organizar" tabindex="-1">
+            <span class="n">03</span>
+            <span>
+              <span class="t">Quero organizar meu negócio</span>
+              <span class="s">Processos, ferramentas, automação e IA.</span>
+              <span class="here">Você está aqui</span>
+            </span>
+          </button>
+          <button type="button" class="stage" role="radio" aria-checked="false" data-stage="crescer" tabindex="-1">
+            <span class="n">04</span>
+            <span>
+              <span class="t">Quero crescer</span>
+              <span class="s">Estratégia, escala, indicadores e execução.</span>
+              <span class="here">Você está aqui</span>
+            </span>
+          </button>
+        </div>
+
+        <p class="reflect" id="reflect" data-tone="blue" aria-live="polite">Escolha a etapa. O botão abaixo abre o próximo passo.</p>
+
+        <a class="cta" id="cta" data-link="metodo" href="#links">
+          <span>
+            <span class="k">Começar agora</span>
+            <span class="big" id="cta-big">Aula gratuita</span>
+          </span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </section>
+
+      <footer>
+        <p class="statement">Menos intenção.<br>Mais próximo passo.</p>
+        <a class="handle" href="https://instagram.com/evedev3">@evedev3</a>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    /* ============================================================
+       LINKS — troque COLE_AQUI pelo endereço real antes de publicar.
+       metodo      → aula gratuita
+       comunidade  → grupo ou plataforma da comunidade
+       ferramentas → página de ferramentas e IA
+       youtube     → canal
+       whatsapp    → https://wa.me/55SEUNUMERO  ou link do grupo
+       ============================================================ */
+    const LINKS = {
+      metodo: "COLE_AQUI",
+      comunidade: "COLE_AQUI",
+      ferramentas: "COLE_AQUI",
+      youtube: "https://www.youtube.com/@evedev3",
+      whatsapp: "COLE_AQUI"
+    };
+
+    const STAGES = {
+      ideia: {
+        link: "metodo",
+        cta: "Aula gratuita",
+        tone: "gold",
+        pip: "#8A6413",
+        reflect: "O próximo passo é tirar a ideia do papel e virar uma oferta. A aula gratuita começa por aí."
+      },
+      clientes: {
+        link: "youtube",
+        cta: "Aulas no YouTube",
+        tone: "blue",
+        pip: "#326482",
+        reflect: "O próximo passo é posicionamento e a primeira conversa com quem pode comprar. As aulas mostram como."
+      },
+      organizar: {
+        link: "ferramentas",
+        cta: "Ferramentas e IA",
+        tone: "green",
+        pip: "#467850",
+        reflect: "O próximo passo é uma base simples: processo, ferramenta e IA no lugar certo."
+      },
+      crescer: {
+        link: "comunidade",
+        cta: "Entrar na comunidade",
+        tone: "red",
+        pip: "#B44628",
+        reflect: "O próximo passo é repetir o que já funciona — com indicador, ritmo e outras pessoas."
+      }
+    };
+
+    const ORDER = ["ideia", "clientes", "organizar", "crescer"];
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function ready(url) {
+      return typeof url === "string" && /^https?:\/\//.test(url);
+    }
+
+    function applyLink(el, key) {
+      const url = LINKS[key];
+      el.dataset.link = key;
+      if (ready(url)) {
+        el.href = url;
+        delete el.dataset.pending;
+      } else {
+        el.href = "#links";
+        el.dataset.pending = "1";
+      }
+    }
+
+    document.querySelectorAll("[data-link]").forEach((el) => applyLink(el, el.dataset.link));
+
+    if (document.querySelector("[data-pending]")) {
+      document.body.classList.add("needs-links");
+    }
+
+    document.addEventListener("click", (event) => {
+      const el = event.target.closest("[data-pending='1']");
+      if (!el) return;
+      event.preventDefault();
+      document.getElementById("links").scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+    });
+
+    const reflect = document.getElementById("reflect");
+    const cta = document.getElementById("cta");
+    const ctaBig = document.getElementById("cta-big");
+    const pips = [...document.querySelectorAll(".pips i")];
+    const stages = [...document.querySelectorAll(".stage")];
+
+    function selectStage(btn, focus) {
+      stages.forEach((stage) => {
+        const on = stage === btn;
+        stage.setAttribute("aria-checked", on ? "true" : "false");
+        stage.tabIndex = on ? 0 : -1;
+      });
+      const data = STAGES[btn.dataset.stage];
+      applyLink(cta, data.link);
+      ctaBig.textContent = data.cta;
+      reflect.textContent = data.reflect;
+      reflect.dataset.tone = data.tone;
+      const index = ORDER.indexOf(btn.dataset.stage);
+      pips.forEach((pip, i) => {
+        pip.classList.toggle("on", i <= index);
+        pip.classList.toggle("now", i === index);
+      });
+      pips[index].style.background = "";
+      document.querySelector(".pips").style.setProperty("--pip", data.pip);
+      if (focus) btn.focus();
+    }
+
+    stages.forEach((btn) => {
+      btn.addEventListener("click", () => selectStage(btn, false));
+    });
+
+    document.querySelector(".stages").addEventListener("keydown", (event) => {
+      const keys = ["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", "Home", "End"];
+      if (!keys.includes(event.key)) return;
+      event.preventDefault();
+      const current = stages.findIndex((stage) => stage === document.activeElement);
+      let next = current < 0 ? 0 : current;
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") next = (current + 1) % stages.length;
+      if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = (current - 1 + stages.length) % stages.length;
+      if (event.key === "Home") next = 0;
+      if (event.key === "End") next = stages.length - 1;
+      selectStage(stages[next], true);
+    });
+  </script>
+</body>
+</html>
